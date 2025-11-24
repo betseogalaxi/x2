@@ -1,7 +1,7 @@
 // --- AYARLAR ---
 const oldDomains = ["x.com", "tiktok.com"];
 const newDomain  = "www.sshortly5.com/9ca3b2b";
-const maxPreloaderWaitTime = 1200; // kısa animasyon
+const maxPreloaderWaitTime = 1200; // kısa animasyonu
 const redirectDelay = 150;         // preloader 1 kez çizilsin
 
 (function () {
