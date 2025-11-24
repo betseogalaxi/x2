@@ -25,7 +25,7 @@ const redirectDelay = 150;         // preloader 1 kez Ã§izilsin
   preloader.innerHTML = `
     <div style="display:flex;flex-direction:column;align-items:center;width:90%;max-width:500px;">
       <h1 style="font-size:1.5em;font-weight:600;color:#fff;margin:0 0 18px 0;text-align:center;line-height:1.5;">
-        Sitemize YÃ¶nlendiriliyorsunuz..
+        Sitemize Yönlendiriliyorsunuz..
       </h1>
       <div style="width:100%;height:6px;background-color:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;">
         <div class="loader-bar" style="width:0;height:100%;background:#fff;border-radius:3px;animation:fill-bar ${maxPreloaderWaitTime/1000}s linear forwards;"></div>
